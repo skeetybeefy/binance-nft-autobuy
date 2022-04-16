@@ -1,17 +1,16 @@
-console.log("******************************")
-console.log("********ИКСЫ НЕИЗБЕЖНЫ********")
-console.log("******************************")
+console.log("********SCRIPT HAS STARTED********")
 
 const btnContainerClass = ".css-1ate4o7" // on an item page
 const btnsContainerClass = ".css-sr9689" // on a modal window (Confirm buy window)
 const btnContainer = document.querySelector(btnContainerClass)
-let buyerInterval = setInterval(buy, 1);
+let buyInterval = setInterval(buy, 1);
+let confirmInterval;
 
 function buy() {
   if (btnContainer.querySelector("button")) {
     btnContainer.querySelector("button").click();
-    clearInterval(buyerInterval)
-    setInterval(confirm, 1)
+    clearInterval(buyInterval)
+    confirmInterval = setInterval(confirm, 1)
   }
 }
 
@@ -22,7 +21,7 @@ function confirm() {
     for (let i = 1; i >= 0; i--) {
       if (btns[i].textContent === "Confirm") {
         btns[i].click()
-        clearInterval(confirm)
+        clearInterval(confirmInterval)
       }
     }
   }
